@@ -1,31 +1,37 @@
-"use client"
+import GuessTheTubeStation from "@/components/guess-the-tube-station"
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/components/ui/use-toast"
-import { cn } from "@/lib/utils"
+export default function ProfilePage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6">My Profile</h1>
 
-export default function GuessTheNumber() {
-  const [secretNumber, setSecretNumber] = useState(0)
-  const [guess, setGuess] = useState("")
-  const [attempts, setAttempts] = useState(0)
-  const [message, setMessage] = useState("")
-  const [gameWon, setGameWon] = useState(false)
-  const { toast } = useToast()
+      {/* Your existing profile content goes here */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+        <p>Add your personal information, skills, and experiences here.</p>
+      </section>
 
-  useEffect(() => {
-    startNewGame()
-  }, [])
+      {/* Projects or Portfolio section */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">My Projects</h2>
+        <p>List your projects or portfolio items here.</p>
+      </section>
 
-  const startNewGame = () => {
-    setSecretNumber(Math.floor(Math.random() * 100) + 1)
-    setGuess("")
-    setAttempts(0)
-    setMessage("")
-    setGameWon(false)
-  }
+      {/* Game section */}
+      <section className="my-8">
+        <h2 className="text-2xl font-semibold mb-4">Try My London Tube Station Game!</h2>
+        <GuessTheTubeStation />
+      </section>
+
+      {/* Contact information */}
+      <section className="mt-8">
+        <h2 className="text-2xl font-semibold mb-4">Contact Me</h2>
+        <p>Add your contact information or a contact form here.</p>
+      </section>
+    </div>
+  )
+}
+
 
   const handleGuess = () => {
     const guessNumber = Number.parseInt(guess)
